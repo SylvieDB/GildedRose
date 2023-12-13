@@ -1,7 +1,8 @@
 package com.gildedrose;
 
 public class GildedRose {
-    private static final int MAX_QUALITY = 49;
+    private static final int MAX_QUALITY = 50;
+    private static final int MIN_QUALITY = 0;
     public Item[] items;
 
     public GildedRose(Item[] items) {
@@ -51,22 +52,35 @@ public class GildedRose {
         }
     }
 
+    public void maxQuality(Item item){
+        item.quality = Math.min(MAX_QUALITY, item.quality);
+    }
+
+    public void minQuality(Item item){
+        item.quality = Math.max(MIN_QUALITY, item.quality);
+    }
+
     public void updateAgedBrie(Item item){
             if(item.sellIn>=0){
                 item.quality ++;
+                maxQuality(item);
             }
             else{
                 item.quality +=2;
+                maxQuality(item);
             }
     }
 
     public void updateBackstagePasses(Item item){
         if(item.sellIn>10){
                 item.quality ++;
+                maxQuality(item);
             } else if (item.sellIn <=10 && item.sellIn>5){
                 item.quality +=2;
+                maxQuality(item);
             } else if (item.sellIn<=5 && item.sellIn>0){
                 item.quality +=3;
+                maxQuality(item);
             } else if (item.sellIn<=0) {
                 item.quality = 0;
             }
@@ -78,9 +92,11 @@ public class GildedRose {
 
     public void updateConjured(Item item){
             item.quality -=2;
+            minQuality(item);
         }
 
     public void updateDefault(Item item){
             item.quality -=1;
+            minQuality(item);
         }
 }

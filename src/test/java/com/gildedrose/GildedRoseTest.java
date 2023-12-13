@@ -86,6 +86,17 @@ class GildedRoseTest {
     }
 
     @Test
+    public void ConjuredQualityPositive() {
+        Item[] items = new Item[]{
+                new Item("Conjured Mana Cake", 5, 1)};
+        GildedRose app = new GildedRose(items);
+        app.updateItem();
+        assertEquals("Conjured Mana Cake", app.items[0].name);
+        assertEquals(4, app.items[0].sellIn);
+        assertEquals(0, app.items[0].quality);
+    }
+
+    @Test
     public void BackstagePassMoreThanTen() {
         Item[] items = new Item[]{
                 new Item("Backstage passes to a TAFKAL80ETC concert", 14, 5)};
@@ -127,5 +138,16 @@ class GildedRoseTest {
         assertEquals("Backstage passes to a TAFKAL80ETC concert", app.items[0].name);
         assertEquals(-1, app.items[0].sellIn);
         assertEquals(0, app.items[0].quality);
+    }
+
+    @Test
+    public void BackstagePassMaxQuality() {
+        Item[] items = new Item[]{
+                new Item("Backstage passes to a TAFKAL80ETC concert", 3, 49)};
+        GildedRose app = new GildedRose(items);
+        app.updateItem();
+        assertEquals("Backstage passes to a TAFKAL80ETC concert", app.items[0].name);
+        assertEquals(2, app.items[0].sellIn);
+        assertEquals(50, app.items[0].quality);
     }
 }

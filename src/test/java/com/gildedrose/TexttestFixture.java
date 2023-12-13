@@ -16,7 +16,7 @@ public class TexttestFixture {
                 new Item("Conjured Mana Cake", 3, 6),
                 //Nieuw toegevoegd
                 new Item("Aged Brie", -1, 0), // check +2 if sellin passed
-                new Item("Aged Brie", 5, 50), // checks no +1 if 50 is reached
+                new Item("Aged Brie", 5, 49), // checks no +1 if 50 is reached
                 new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20)}; // check drop to 0 if concert passed
 
 
