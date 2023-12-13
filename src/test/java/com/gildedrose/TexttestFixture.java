@@ -11,10 +11,14 @@ public class TexttestFixture {
                 new Item("Sulfuras, Hand of Ragnaros", 0, 80), //
                 new Item("Sulfuras, Hand of Ragnaros", -1, 80),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-                // this conjured item does not work properly yet
-                new Item("Conjured Mana Cake", 3, 6) };
+                new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20),
+                new Item("Conjured Mana Cake", 3, 6),
+                //Nieuw toegevoegd
+                new Item("Aged Brie", -1, 0), // check +2 if sellin passed
+                new Item("Aged Brie", 5, 50), // checks no +1 if 50 is reached
+                new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20)}; // check drop to 0 if concert passed
+
 
         GildedRose app = new GildedRose(items);
 
@@ -30,7 +34,7 @@ public class TexttestFixture {
                 System.out.println(item);
             }
             System.out.println();
-            app.updateQuality();
+            app.updateItem();
         }
     }
 

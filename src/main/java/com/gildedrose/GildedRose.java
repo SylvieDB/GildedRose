@@ -1,8 +1,8 @@
 package com.gildedrose;
 
 public class GildedRose {
-    private static final int MAX_QUALITY = 50;
-    private Item[] items;
+    private static final int MAX_QUALITY = 49;
+    public Item[] items;
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -22,7 +22,7 @@ public class GildedRose {
     }
 
     public void updateQuality(Item item) {
-        if (qualityIsCorrect(item) == true) {
+        if (qualityIsCorrect(item)) {
             switch (item.name) {
                 case "Aged Brie":
                     updateAgedBrie(item);
@@ -61,12 +61,14 @@ public class GildedRose {
     }
 
     public void updateBackstagePasses(Item item){
-            if(item.sellIn <=10){
+        if(item.sellIn>10){
+                item.quality ++;
+            } else if (item.sellIn <=10 && item.sellIn>5){
                 item.quality +=2;
-            } else if (item.sellIn<=5){
+            } else if (item.sellIn<=5 && item.sellIn>0){
                 item.quality +=3;
-            } else if (item.sellIn<=0){
-                item.quality=0;
+            } else if (item.sellIn<=0) {
+                item.quality = 0;
             }
     }
 
